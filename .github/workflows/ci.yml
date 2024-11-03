@@ -24,17 +24,23 @@ jobs:
         run: npm install
 
       - name: Run tests with coverage ${{ matrix.test_number }}
-        run: npm run test:coverage
+        run: |
+          export TEST_NUMBER=${{ matrix.test_number }}
+          npm run test:coverage
         env:
-          CI: true  # To ensure Jest behaves correctly in CI
+          CI: true  # Ensures Jest behaves correctly in CI
+
+      - name: Debug Coverage Output
+        run: cat ./coverage-${{ matrix.test_number }}/lcov.info
 
       - name: Upload coverage to Coveralls (parallel)
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage/lcov.info
+          path-to-lcov: ./coverage-${{ matrix.test_number }}/lcov.info
           flag-name: run-${{ join(matrix.*, '-') }}
           parallel: true
+          debug: true
 
   finish:
     needs: test
