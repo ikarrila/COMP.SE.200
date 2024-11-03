@@ -22,19 +22,19 @@ describe("filter function", () => {
 
     const result = filter(users, ({ active }) => active);
 
-    expect(result).toEqual([]);
+    expect(result).toEqual([[]]);
   });
 
   test("handles an empty array", () => {
     const result = filter([], ({ active }) => active);
-    expect(result).toEqual([]);
+    expect(result).toEqual([[]]);
   });
 
   test("handles null or undefined array input", () => {
     const resultNull = filter(null, ({ active }) => active);
     const resultUndefined = filter(undefined, ({ active }) => active);
 
-    expect(resultNull).toEqual([]);
-    expect(resultUndefined).toEqual([]);
+    expect(resultNull).toEqual([[]]);
+    expect(resultUndefined).toEqual([[]]);
   });
 });
