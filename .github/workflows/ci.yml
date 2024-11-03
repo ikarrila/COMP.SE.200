@@ -1,38 +1,49 @@
-name: Node.js CI with Jest and Coveralls
+name: Test and Coveralls Parallel
 
-on:
+on: 
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [16, 18, 20]
-
+        test_number:
+          - 1
+          - 2
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests with coverage
+      - name: Run tests with coverage ${{ matrix.test_number }}
         run: npm run test:coverage
+        env:
+          CI: true  # To ensure Jest behaves correctly in CI
 
-      - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@v2.3.4
+      - name: Upload coverage to Coveralls (parallel)
+        uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./coverage/lcov.info
+          flag-name: run-${{ join(matrix.*, '-') }}
+          parallel: true
+
+  finish:
+    needs: test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Coveralls parallel jobs are finished
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
+          carryforward: "run-1,run-2"
