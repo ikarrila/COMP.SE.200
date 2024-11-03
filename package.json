@@ -5,10 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no tests are implemented yet \" && exit 1"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-chain": "^1.1.6"
+  }
 }
