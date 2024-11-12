@@ -5,5 +5,6 @@ export default {
   coverageReporters: ["lcov", "text"],
   transform: {
     "^.+\\.js$": "babel-jest"
-  }
+  },
+  setupFilesAfterEnv: ['<rootDir>/setup-jest-chain.js'],
 };
