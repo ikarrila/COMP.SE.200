@@ -1,7 +1,6 @@
-// src/__tests__/filter.test.js
-
 import filter from '../filter.js';
 
+//Test ID UC1
 describe("filter function", () => {
   test("filters an array based on a predicate", () => {
     const users = [
