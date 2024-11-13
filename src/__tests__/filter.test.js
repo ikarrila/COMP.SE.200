@@ -1,7 +1,6 @@
-// src/__tests__/filter.test.js
-
 import filter from '../filter.js';
 
+//Test ID UC1
 describe("filter function", () => {
   test("filters an array based on a predicate", () => {
     const users = [
@@ -12,6 +11,10 @@ describe("filter function", () => {
     const result = filter(users, ({ active }) => active);
 
     expect(result).toEqual([{ user: 'barney', active: true }]);
+    expect(users).toEqual([
+      { user: 'barney', active: false },
+      { user: 'fred', active: false }
+    ]);
   });
 
   test("returns an empty array if no elements match the predicate", () => {
@@ -23,6 +26,10 @@ describe("filter function", () => {
     const result = filter(users, ({ active }) => active);
 
     expect(result).toEqual([[]]);
+    expect(users).toEqual([
+      { user: 'barney', active: false },
+      { user: 'fred', active: false }
+    ]);
   });
 
   test("handles an empty array", () => {

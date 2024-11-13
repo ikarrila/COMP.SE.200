@@ -10,6 +10,8 @@ yarn-error.log*
 
 # Coverage directory used by Jest
 coverage/
+coverage*/
+coverage-undefined/
 
 # Dependency directories
 jspm_packages/
