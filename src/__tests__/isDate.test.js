@@ -10,10 +10,10 @@ describe('isDate', () => {
         expect(isDate('2019-01-01')).toBe(false);
     });
     test('invalid date object', () => {
-        expect(isDate(new Date('invalid'))).toBe(false);
+        expect(isDate(new Date('invalid input'))).toBe(false);
     });
     test('invalid date string', () => {
-        expect(isDate('invalid')).toBe(false);
+        expect(isDate('invalid input')).toBe(false);
     });
     test('number', () => {
         expect(isDate(1)).toBe(false);
