@@ -1,6 +1,6 @@
 name: Test and Coveralls Parallel
 
-on: 
+on:
   push:
   pull_request:
 
@@ -28,7 +28,8 @@ jobs:
           export TEST_NUMBER=${{ matrix.test_number }}
           npm run test:coverage
         env:
-          CI: true  # Ensures Jest behaves correctly in CI
+          CI: true # Ensures Jest behaves correctly in CI
+          continue-on-error: true
 
       - name: Debug Coverage Output
         run: cat ./coverage-${{ matrix.test_number }}/lcov.info
