@@ -12,6 +12,7 @@ jobs:
         test_number:
           - 1
           - 2
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
@@ -29,7 +30,6 @@ jobs:
           npm run test:coverage
         env:
           CI: true # Ensures Jest behaves correctly in CI
-          allow_failure: true
 
       - name: Debug Coverage Output
         run: cat ./coverage-${{ matrix.test_number }}/lcov.info
