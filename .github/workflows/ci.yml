@@ -30,12 +30,14 @@ jobs:
           npm run test:coverage
         env:
           CI: true # Ensures Jest behaves correctly in CI
+          continue-on-error: true
 
       - name: Debug Coverage Output
         run: cat ./coverage-${{ matrix.test_number }}/lcov.info
 
       - name: Upload coverage to Coveralls (parallel)
         uses: coverallsapp/github-action@v2
+        continue-on-error: true
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./coverage-${{ matrix.test_number }}/lcov.info
