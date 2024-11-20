@@ -5,6 +5,9 @@ describe('add', () => {
     test('adds two numbers', () => {
         expect(add(6, 4)).toBe(10);
     });
+    test('adds float and integer', () => {
+        expect(add(6.5, 4)).toBe(10.5);
+    });
     test('adds two negative numbers', () => {
         expect(add(-1, -2)).toBe(-3);
     });
