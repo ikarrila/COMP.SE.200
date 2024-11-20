@@ -2,46 +2,46 @@ import toNumber from '../toNumber';
 
 //Test ID UC8
 describe('toNumber', () => {
-    test('integer string', () => {
+    test('input numeral string', () => {
         expect(toNumber('1')).toBe(1);
     });
-    test('float string', () => {
+    test('input float string', () => {
         expect(toNumber('1.1')).toBe(1.1);
     });
-    test('integer', () => {
+    test('input integer', () => {
         expect(toNumber(1)).toBe(1);
     });
-    test('float', () => {
+    test('input float', () => {
         expect(toNumber(1.1)).toBe(1.1);
     });
-    test('string', () => {
+    test('input string', () => {
         expect(toNumber('test')).toBe(NaN);
     });
-    test('null', () => {
+    test('input null', () => {
         expect(toNumber(null)).toBe(NaN);
     });
-    test('undefined', () => {
+    test('input undefined', () => {
         expect(toNumber(undefined)).toBe(NaN);
     });
-    test('empty string', () => {
+    test('input empty string', () => {
         expect(toNumber('')).toBe(NaN);
     });
-    test('boolean', () => {
+    test('input boolean', () => {
         expect(toNumber(true)).toBe(NaN);
     });
-    test('object', () => {
+    test('input object', () => {
         expect(toNumber({})).toBe(NaN);
     });
-    test('array', () => {
+    test('input array', () => {
         expect(toNumber([])).toBe(NaN);
     });
-    test('function', () => {
+    test('input empty function', () => {
         expect(toNumber(() => { })).toBe(NaN);
     });
-    test('symbol', () => {
+    test('input symbol', () => {
         expect(toNumber(Symbol('symbol'))).toBe(NaN);
     });
-    test('binary', () => {
+    test('input binary numbers', () => {
         expect(toNumber('0b101')).toBe(5);
         expect(toNumber('0o12')).toBe(10);
     });
