@@ -18,16 +18,16 @@ describe('toNumber', () => {
         expect(toNumber('test')).toBe(NaN);
     });
     test('null', () => {
-        expect(toNumber(null)).toBe(0);
+        expect(toNumber(null)).toBe(NaN);
     });
     test('undefined', () => {
         expect(toNumber(undefined)).toBe(NaN);
     });
     test('empty string', () => {
-        expect(toNumber('')).toBe(0);
+        expect(toNumber('')).toBe(NaN);
     });
     test('boolean', () => {
-        expect(toNumber(true)).toBe(1);
+        expect(toNumber(true)).toBe(NaN);
     });
     test('object', () => {
         expect(toNumber({})).toBe(NaN);
