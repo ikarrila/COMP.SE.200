@@ -38,4 +38,11 @@ describe('toNumber', () => {
     test('function', () => {
         expect(toNumber(() => { })).toBe(NaN);
     });
+    test('symbol', () => {
+        expect(toNumber(Symbol('symbol'))).toBe(NaN);
+    });
+    test('binary', () => {
+        expect(toNumber('0b101')).toBe(5);
+        expect(toNumber('0o12')).toBe(10);
+    });
 });

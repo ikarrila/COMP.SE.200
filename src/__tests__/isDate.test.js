@@ -1,5 +1,4 @@
 import isDate from '../isDate';
-
 //Test ID UC7
 describe('isDate', () => {
     //Only this kind of value should be considered as date	
@@ -38,5 +37,8 @@ describe('isDate', () => {
     });
     test('function', () => {
         expect(isDate(() => { })).toBe(false);
+    });
+    test('false', () => {
+        expect(isDate(false)).toBe(false);
     });
 });
